@@ -11,7 +11,7 @@ const app = new Vue({
     },
     
     mounted: function() {
-        fetch('https://cors-anywhere.herokuapp.com/' + url)
+        fetch('http://localhost:5500/' + url)
             .then(response => response.json())
             .then(articlesResponse => {
                 this.articles = articlesResponse;
