@@ -45,11 +45,6 @@
             </div>
         </section>
 
-        <!-- test section -->
-        <section>
-            <h1>{{articles.title}}</h1>
-        </section>
-
         <!-- News columns section -->
         <section>
             <div class="columns">
@@ -59,15 +54,15 @@
                         <article class="media">
                           <div class="media-left">
                             <figure class="image is-64x64">
-                              <img v-bind:src="article.urlToImage" alt="Image">
+                              <!-- <img v-bind:src="article.urlToImage" alt="Image"> -->
                             </figure>
                           </div>
                           <div class="media-content">
                             <div class="content">
                               <p>
-                                <strong>{{article.title}}</strong> <small>{{article.author}}</small> <small>{{article.publishedAt}}</small>
+                                <strong>{{}}</strong> <small>{{}}</small> <small>{{}}</small>
                                 <br>
-                                {{article.description}}
+                                {{}}
                               </p>
                             </div>
                             <nav class="level is-mobile">
