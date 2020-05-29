@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News for You</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Top heading section -->
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title is-1">News for You</h1>
+                    <h2 class="subtitle is-4">All news at one place, just for you!</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and filter section -->
+        <section>
+            <h2>Search by...</h2>
+            <ul>
+                <li>Cathegory</li>
+                <li>Phrase</li>
+                <li>Date</li>
+            </ul>
+            <!-- Should be hidden until the user presses a filter list item and become visible one at a time -->
+            <div>
+                <div class="cathegory">
+                    <input type="text" placeholder="What chategory are you looking for?">
+                    <button class="button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="phrase">
+                    <input type="text" placeholder="Insert a phrase to look for">
+                    <button class="button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="date">
+                    <input type="text" placeholder="How new do you want your news to be?">
+                    <button class="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News columns section -->
+        <section>
+            <div class="columns">
+                <div class="column">
+                    <!-- Box with article starts here -->
+                    <div class="box" v-for="article in articles">
+                        <article class="media">
+                          <div class="media-left">
+                            <figure class="image is-64x64">
+                              <img v-bind:src="article.urlToImage" alt="Image">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <div class="content">
+                              <p>
+                                <strong>{{article.title}}</strong> <small>{{article.author}}</small> <small>{{article.publishedAt}}</small>
+                                <br>
+                                {{article.description}}
+                              </p>
+                            </div>
+                            <nav class="level is-mobile">
+                              <div class="level-left">
+                                <a class="level-item" aria-label="reply">
+                                  <span class="icon is-small">
+                                    <i class="fas fa-reply" aria-hidden="true"></i>
+                                  </span>
+                                </a>
+                                <a class="level-item" aria-label="retweet">
+                                  <span class="icon is-small">
+                                    <i class="fas fa-retweet" aria-hidden="true"></i>
+                                  </span>
+                                </a>
+                                <a class="level-item" aria-label="like">
+                                  <span class="icon is-small">
+                                    <i class="fas fa-heart" aria-hidden="true"></i>
+                                  </span>
+                                </a>
+                              </div>
+                            </nav>
+                          </div>
+                        </article>
+                    </div>
+                    <!-- box with article ends here -->
+                </div>
+            </div>
+        </section>
+    </div>
+        <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>
