@@ -45,51 +45,36 @@
             </div>
         </section>
 
-        <!-- News columns section -->
+        <!-- News cards section -->
         <section>
-            <div class="columns">
-                <div class="column">
-                    <!-- Box with article starts here -->
-                    <div class="box" v-for="article in articles">
-                        <article class="media">
-                          <div class="media-left">
-                            <figure class="image is-64x64">
-                              <!-- <img v-bind:src="article.urlToImage" alt="Image"> -->
-                            </figure>
-                          </div>
-                          <div class="media-content">
-                            <div class="content">
-                              <p>
-                                <strong>{{}}</strong> <small>{{}}</small> <small>{{}}</small>
-                                <br>
-                                {{}}
-                              </p>
+            <div class="columns is-mobile">
+                <div class="column" v-for="article in articles">
+                    <!-- news card start -->
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                          <div class="media">
+                            <div class="media-content">
+                              <p class="title is-4">{{article.title}}</p>
+                              <p class="subtitle is-6">{{article.author}}</p>
                             </div>
-                            <nav class="level is-mobile">
-                              <div class="level-left">
-                                <a class="level-item" aria-label="reply">
-                                  <span class="icon is-small">
-                                    <i class="fas fa-reply" aria-hidden="true"></i>
-                                  </span>
-                                </a>
-                                <a class="level-item" aria-label="retweet">
-                                  <span class="icon is-small">
-                                    <i class="fas fa-retweet" aria-hidden="true"></i>
-                                  </span>
-                                </a>
-                                <a class="level-item" aria-label="like">
-                                  <span class="icon is-small">
-                                    <i class="fas fa-heart" aria-hidden="true"></i>
-                                  </span>
-                                </a>
-                              </div>
-                            </nav>
                           </div>
-                        </article>
+                      
+                          <div class="content">
+                            {{article.description}}.
+                            <a href="#">Go to article</a>
+                            <br>
+                            <time datetime="2016-1-1">{{article.publishedAt}}</time>
+                          </div>
+                        </div>
                     </div>
-                    <!-- box with article ends here -->
+                    <!-- news card end -->
                 </div>
-            </div>
+              </div>
         </section>
     </div>
         <!-- development version, includes helpful console warnings -->

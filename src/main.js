@@ -19,7 +19,7 @@ var url = 'http://newsapi.org/v2/top-headlines?' +
 const app = new Vue({
     el: '#app',
     data: {
-        articles: [],
+        articles: []
     },
     
     mounted: function() {
