@@ -26,7 +26,7 @@ const app = new Vue({
         fetch(url)
             .then(response => response.json())
             .then(articlesResponse => {
-                this.articles = articlesResponse;
+                this.articles = articlesResponse.articles
             })
     }
 })
