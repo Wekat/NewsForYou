@@ -1,9 +1,38 @@
+.search-section {
+    padding-left: 24px;
+    margin-bottom: 5%;
+}
+
+.search-title {
+    padding: 20px 0 0;
+}
+
+.search-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select-box {
+    height: 40px;
+    width: 300px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.select-box-phrase {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+    padding-left: 10px;
+}
+
 .column {
     min-width: 320px;
+    max-width: 620px;
 }
 
 .card {
-    height: 615px;
+    height: 100%;
 }
 
 .article-image {

@@ -23,27 +23,44 @@
         </section>
 
         <!-- Search and filter section -->
-        <section>
-            <h2>Search by...</h2>
-            <ul>
-                <li>Cathegory</li>
-                <li>Phrase</li>
-                <li>Date</li>
-            </ul>
-            <!-- Should be hidden until the user presses a filter list item and become visible one at a time -->
-            <div>
+        <section class="search-section">
+            <h2 class="search-title title is-4">Search by...</h2>
+            <div class="search-fields">
                 <div class="cathegory">
-                    <input type="text" placeholder="What chategory are you looking for?">
-                    <button class="button"><i class="fas fa-search"></i></button>
+                    <label for="cathegory"></label>
+                    <select class="select-box" v-model="inputCategory" name="" id="cathegory">
+                        <option value="" disabled selected>Category</option>
+                        <option value="business">Business</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="general">General</option>
+                        <option value="health">Health</option>
+                        <option value="science">Science</option>
+                        <option value="sports">Sports</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+                <div class="country">
+                    <label for="country"></label>
+                    <select  class="select-box" v-model="inputCountry" name="" id="country">
+                        <option value="" disabled selected>Country</option>
+                        <option value="au">Australia</option>
+                        <option value="ca">Canada</option>
+                        <option value="gb">Great Britain</option>
+                        <option value="fr">France</option>
+                        <option value="in">India</option>
+                        <option value="it">Italia</option>
+                        <option value="jp">Japan</option>
+                        <option value="mx">Mexico</option>
+                        <option value="no">Norway</option>
+                        <option value="ru">Russia</option>
+                        <option value="se">Sweden</option>
+                        <option value="us">USA</option>
+                    </select>
                 </div>
                 <div class="phrase">
-                    <input type="text" placeholder="Insert a phrase to look for">
-                    <button class="button"><i class="fas fa-search"></i></button>
+                    <input class="select-box select-box-phrase" v-model="inputPhrase" type="text" placeholder="Insert a phrase to look for">
                 </div>
-                <div class="date">
-                    <input type="text" placeholder="How new do you want your news to be?">
-                    <button class="button"><i class="fas fa-search"></i></button>
-                </div>
+                <search-button></search-button>
             </div>
         </section>
 
@@ -68,7 +85,7 @@
                       
                           <div class="content">
                             {{article.description}}.
-                            <a href="#">Go to article</a>
+                            <a :href="article.url" target="_blank">Go to article</a>
                             <br>
                             <time datetime="2016-1-1">{{article.publishedAt}}</time>
                           </div>
