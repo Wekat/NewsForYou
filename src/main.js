@@ -57,7 +57,7 @@ const app = new Vue({
         },
     },
     
-    // denna vill kunna ha bara genom anrop på fetchData!
+    // denna vill kunna ha bara genom anrop på fetchData, som längre ner!
     mounted: function() {
         fetch(url + country + api)
             .then(response => response.json())
