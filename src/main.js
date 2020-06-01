@@ -4,6 +4,7 @@ let url = 'http://newsapi.org/v2/top-headlines?pageSize=50&';
 let country = 'country=se&';
 let api = 'apiKey=abb493012a5a47909c682c381a8e855b';
 
+/* --- first alternative to fetching the api but need to find way to search! ---*/
 // const app = new Vue({
 //     el: '#app',
 //     data: {
@@ -19,6 +20,7 @@ let api = 'apiKey=abb493012a5a47909c682c381a8e855b';
 //     }
 // })
 
+/* second alternative but still no search that work --*/
 const app = new Vue({
     el: '#app',
     data () {
