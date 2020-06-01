@@ -1,7 +1,7 @@
 // API KEY: abb493012a5a47909c682c381a8e855b
-let url = 'http://newsapi.org/v2/top-headlines?pageSize=50&';
+let url = 'http://newsapi.org/v2/top-headlines?';
 
-let country = 'country=se&';
+let country = 'country=se';
 let api = 'apiKey=abb493012a5a47909c682c381a8e855b';
 
 /* --- first alternative to fetching the api but need to find way to search! ---*/
@@ -25,46 +25,36 @@ const app = new Vue({
     el: '#app',
     data () {
         return {
-            apiUrl:'',
-            isBusy: false,
-            showloader: false,
-            currentPage: 1,
-            maxPerPage: 50,
-            inputCategory: '',
-            inputCountry: 'se',
+            inputCategory: 'undefined',
+            inputCountry: 'undefined',
             inputPhrase:'',
+            pageSize: 50,
             articles: [],
         }
     },
 
     computed: {
         apiUrl() {
-            if (this.inputCategory !== '' && this.inputCountry !== '' && this.inputPhrase !== '') {
-                this.apiUrl = url + `category=${this.inputCategory}&`
-                + `country=${this.inputCountry}&`
-                + `q=${this.inputPhrase}&` + api;
-            } else if (this.inputCategory !== '') {
-                this.apiUrl = url + `country=${this.inputCountry}&`
-                + `q=${this.inputPhrase}&` + api;
-            } else if (this.inputCountry !== '') {
-                this.apiUrl = url + `category=${this.inputCategory}&`
-                + `q=${this.inputPhrase}&` + api;
-            } else if (this.inputPhrase !== '') {
-                this.apiUrl = url + `category=${this.inputCategory}&`
-                + `country=${this.inputCountry}&`
-                + api;
+            let urlParams = [api];
+            if (this.inputCategory !== '' && this.inputCategory !== 'undefined') {
+                urlParams.push(`category=${this.inputCategory}`);
             }
+            if (this.inputCountry !== '' && this.inputCountry !== 'undefined') {
+                urlParams.push(`country=${this.inputCountry}`);
+            }
+            if (this.inputPhrase !== '') {
+                urlParams.push(`q=${this.inputPhrase}`);
+            }
+            if (urlParams.length === 1) {
+                urlParams.push(country);
+            }
+
+            urlParams.push(`pageSize=${this.pageSize}`);
+            return url + urlParams.join('&');
         },
     },
     
-    // denna vill kunna ha bara genom anrop på fetchData, som längre ner!
-    mounted: function() {
-        fetch(url + country + api)
-            .then(response => response.json())
-            .then(articlesResponse => {
-                this.articles = articlesResponse.articles
-            })
-    },
+    
 
     methods: {
         onSearch() {
@@ -115,17 +105,31 @@ const app = new Vue({
 
                 .then(response => response.json())
                 .then(articlesResponse => {
-                    this.articles = articlesResponse.articles
+                    this.articles = articlesResponse.articles;
+                    this.articles.forEach(element => {
+                        element.publishedAt = new Date (element.publishedAt).toDateString();
+                    });
                 })
 
                 .catch((error) => {
                     Console.log(error);
                 })
         },
-        mounted() {
-            this.fetchData();
-        }
-    }
+        
+    },
+
+    mounted() {
+        this.fetchData();
+    },
+
+    // denna vill kunna ha bara genom anrop på fetchData, som längre ner!
+    // mounted: function() {
+    //     fetch(url + country + api)
+    //         .then(response => response.json())
+    //         .then(articlesResponse => {
+    //             this.articles = articlesResponse.articles
+    //         })
+    // },
 })
 
 // Vue.component('search-button', {
