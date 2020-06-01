@@ -34,7 +34,7 @@ Vue.component('search-button', {
             const inputCountry = this.inputCountry;
             const inputPhrase = this.inputPhrase;
 
-            fetch (url + 'country=' + this.inputCountry + '&' + 'category=' + this.inputCategory + '&' + 'q=' + this.inputPhrase + api)
+            fetch (url + 'country=' + inputCountry + '&' + 'category=' + inputCategory + '&' + 'q=' + inputPhrase + api)
                 .then(response => response.json())
                 .then(articlesResponse => {
                     this.articles = articlesResponse.articles
