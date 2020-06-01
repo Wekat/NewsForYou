@@ -17,7 +17,7 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title is-1">News for You</h1>
-                    <h2 class="subtitle is-4">All news at one place, just for you!</h2>
+                    <h2 class="subtitle is-4">Top headlines for you!</h2>
                 </div>
             </div>
         </section>
@@ -67,7 +67,7 @@
         <!-- News cards section -->
         <section>
             <div class="columns is-mobile is-multiline">
-                <div class="column" v-for="article in articles">
+                <div class="column" v-for="(article, index) in articles" :key="index">
                     <!-- news card start -->
                     <div class="card">
                         <div class="card-image">
