@@ -4,22 +4,6 @@ let url = 'http://newsapi.org/v2/top-headlines?';
 let country = 'country=se';
 let api = 'apiKey=abb493012a5a47909c682c381a8e855b';
 
-/* --- first alternative to fetching the api but need to find way to search! ---*/
-// const app = new Vue({
-//     el: '#app',
-//     data: {
-//         articles: [],
-//     },
-    
-//     mounted: function() {
-//         fetch(url + country + api)
-//             .then(response => response.json())
-//             .then(articlesResponse => {
-//                 this.articles = articlesResponse.articles
-//             })
-//     }
-// })
-
 /* second alternative but still no search that work --*/
 const app = new Vue({
     el: '#app',
@@ -65,43 +49,10 @@ const app = new Vue({
         resetData() {
             this.articles = [];
         },
-        // fetchSearchNews() {
-        //     if(this.inputCategory !== '' || this.inputCountry !== '' || this.inputPhrase !== '') {
-        //         this.apiUrl = url + country + api;
-        //         this.isBusy = true;
-
-        //         this.resetData();
-        //         this.fetachData();
-        //     }
-        //     else {
-        //         this.fetchTopNews();
-        //     }
-            
-        // },
-        // fetchTopNews() {
-        //     this.apiUrl = url + 'category=' + this.inputCategory + '&'
-        //     + 'country=' + this.inputCountry + '&'
-        //     + 'q=' + this.inputPhrase + '&' + api;
-
-        //     this.isBusy = true;
-        //     this.inputCategory = '';
-        //     this.inputCountry = '';
-        //     this.inputPhrase = '';
-
-        //     this.resetData();
-        //     this.fetchData();
-        // },
+        
         fetchData() {
             let req = new Request(this.apiUrl);
             fetch(req)
-                // .then((resp) => resp.json())
-                // .then((data) => {
-                //     this.totalResults = data.totalResults;
-                //     data.articles.forEach(element => {
-                //         this.articles.push(element);
-                //     });
-                //     this.isBusy = false;
-                //     this.showLoader = false;
 
                 .then(response => response.json())
                 .then(articlesResponse => {
@@ -121,82 +72,4 @@ const app = new Vue({
     mounted() {
         this.fetchData();
     },
-
-    // denna vill kunna ha bara genom anrop på fetchData, som längre ner!
-    // mounted: function() {
-    //     fetch(url + country + api)
-    //         .then(response => response.json())
-    //         .then(articlesResponse => {
-    //             this.articles = articlesResponse.articles
-    //         })
-    // },
 })
-
-// Vue.component('search-button', {
-//     data() {
-//       return {
-//         inputCategory: '',
-//         inputCountry: '',
-//         inputPhrase: ''
-//       }
-//     },
-//     template: '<button @click="fetchSearchNews" class="button"><i class="fas fa-search"></i></button>',
-//     methods: {
-//         fetchSearchNews() {
-//             if(this.inputCategory !== '' || this.inputCountry !== '' || this.inputPhrase !== '') {
-//                 this.apiUrl = url + country + api;
-//                 this.isBusy = true;
-
-//                 this.resetData();
-//                 this.fetchData();
-//             }
-//             else {
-//                 this.fetchTopNews();
-//             }
-            
-//         },
-//         fetchTopNews() {
-//             this.apiUrl = url + 'category=' + this.inputCategory + '&'
-//             + 'country=' + this.inputCountry + '&'
-//             + 'q=' + this.inputPhrase + '&' + api;
-
-//             this.isBusy = true;
-//             this.inputCategory = '';
-//             this.inputCountry = '';
-//             this.inputPhrase = '';
-
-//             this.resetData();
-//             this.fetchData();
-//         },
-
-        
-
-//     }
-// })
-
-// Vue.component('search-button', {
-//     data: function () {
-//       return {
-//         inputCategory: "",
-//         inputCountry: "",
-//         inputPhrase: ""
-//       }
-//     },
-//     template: '<button @click="fetchSearchNews" class="button"><i class="fas fa-search"></button>',
-//     methods: {
-//         onSearch() {
-//             const inputCathegory = this.inputCategory;
-//             const inputCountry = this.inputCountry;
-//             const inputPhrase = this.inputPhrase;
-
-//             fetch (url + 'country=' + inputCountry + '&' + 'category=' + inputCategory + '&' + 'q=' + inputPhrase + api)
-//                 .then(response => response.json())
-//                 .then(articlesResponse => {
-//                     this.articles = articlesResponse.articles
-//                 })
-//         },
-
-        
-
-//     }
-// })
