@@ -13,7 +13,7 @@
 <body>
     <div id="app">
         <!-- Top heading section -->
-        <section class="hero is-primary">
+        <section class="hero is-info is-bold">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title is-1">News for You</h1>
@@ -26,7 +26,7 @@
         <section class="search-section">
             <h2 class="search-title title is-4">Search by...</h2>
             <div class="search-fields">
-                <div class="select">
+                <div class="select is-info">
                     <label for="cathegory"></label>
                     <select class="select-box" v-model="inputCategory" name="" id="cathegory">
                         <option value="undefined" disabled selected>Category</option>
@@ -39,7 +39,7 @@
                         <option value="technology">Technology</option>
                     </select>
                 </div>
-                <div class="select">
+                <div class="select is-info">
                     <label for="country"></label>
                     <select  class="select-box" v-model="inputCountry" name="" id="country">
                         <option value="undefined" disabled selected>Country</option>
@@ -58,9 +58,9 @@
                     </select>
                 </div>
                 <div class="phrase">
-                    <input class="select-box select-box-phrase" v-model="inputPhrase" type="text" placeholder="Insert a phrase to look for">
+                    <input class="select-box select-box-phrase input is-info" v-model="inputPhrase" type="text" placeholder="Insert a phrase to look for">
                 </div>
-                <button @click="onSearch" class="button"><i class="fas fa-search"></i></button>
+                <button @click="onSearch" class="button is-info"><i class="fas fa-search"></i></button>
             </div>
             <!-- dropdown for amount of articles shown -->
             <div class="control">
@@ -80,14 +80,15 @@
         </section>
 
         <!-- News cards section -->
-        <section>
-            <div class="columns is-mobile is-multiline">
-                <div class="column" v-for="(article, index) in articles" :key="index">
+        <section class="articles-section">
+            <div class="columns is-multiline">
+                <div class="column is-one-fifth-fullhd is-one-quarter-desktop is-one-third-tablet is-full-mobile" v-for="(article, index) in articles" :key="index">
                     <!-- news card start -->
                     <div class="card">
                         <div class="card-image">
                           <figure class="image">
-                            <img class="article-image" v-bind:src="article.urlToImage" alt="Placeholder image">
+                            <img class="article-image" v-if="article.urlToImage" v-bind:src="article.urlToImage" alt="Placeholder image">
+                            <i v-else class="fas fa-image"></i>
                           </figure>
                         </div>
                         <div class="card-content">

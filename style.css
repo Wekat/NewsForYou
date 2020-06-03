@@ -16,6 +16,14 @@ body {
     flex-wrap: wrap;
 }
 
+.select {
+    margin-bottom: 20px;
+}
+
+.select.input, .select select, .textarea {
+    max-width: 300px;
+}
+
 .select-box {
     height: 40px;
     width: 300px;
@@ -24,19 +32,18 @@ body {
 }
 
 .select:not(.is-multiple):not(.is-loading)::after {
-    margin-right: 10px;
+    margin-right: 5%;
 }
 
 .select-box-phrase {
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(169, 169, 169);
     padding-left: 10px;
+    margin-bottom: 20px;
 }
 
-.column {
-    min-width: 320px;
-    max-width: 620px;
+.button {
+    margin-bottom: 20px;
 }
 
 .card {
@@ -48,3 +55,11 @@ body {
     object-fit: contain;
     object-position: top;
 }
+
+/* media rule to be used if not using bulma classes for responsiveness
+
+@media only screen and (max-width: 615px) {
+    .card {
+        height: auto;
+    }
+} */
